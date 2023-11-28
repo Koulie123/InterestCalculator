@@ -9,6 +9,9 @@
 
         public decimal InterestGain;
 
+        public bool InvestAtStartOfMonth;
+        public bool DisplayMonthly;
+
         public List<decimal> CompoundInterestCalculationYear(decimal principal, int numberOfInvestmentYears, decimal amountAddedEachMonth, decimal interest)
         {
             decimal Principal = principal;
