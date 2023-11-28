@@ -22,6 +22,9 @@ body {
     background-color: #E0FFFF;
 }
 
+.center {
+    text-align: center;
+}
 
 .inputField {
     width: 180px;
