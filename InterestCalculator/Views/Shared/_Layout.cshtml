@@ -25,8 +25,16 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-Area="" asp-controller="" asp-action="CompoundInterest">CompoundInterest</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Calculators
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="" asp-action="SimpleInterest">Simple Interest</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="" asp-action="CompoundInterest">Compound Interest</a></li>
+                                <!-- Add more calculator links here -->
+                            </ul>
+
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -51,3 +59,4 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+

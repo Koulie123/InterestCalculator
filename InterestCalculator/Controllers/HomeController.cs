@@ -13,6 +13,8 @@ namespace InterestCalculator.Controllers
             _logger = logger;
         }
 
+
+
         public IActionResult Index()
         {
             var viewModel = new CompoundInterestModelYear();
@@ -39,6 +41,24 @@ namespace InterestCalculator.Controllers
             viewModel.InterestGain = viewModel.CalculateCompoundInterest(viewModel.Principal, viewModel.AmountAddedEachYear, viewModel.Interest, viewModel.NumberOfInvestmentYears);
             return View(viewModel);
         }
+
+
+        public IActionResult SimpleInterest()
+        {
+            var viewModel = new SimpleInterestViewModel();
+            return View(viewModel);
+        }
+        [HttpPost]
+        public IActionResult SimpleInterest(SimpleInterestViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                viewModel.SimpleInterestCalculation();
+            }
+            return View(viewModel);
+        }
+
+
         public IActionResult Privacy()
         {
             return View();
