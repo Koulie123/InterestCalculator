@@ -8,6 +8,7 @@
         public decimal Interest { get; set; }
 
         public decimal InterestGain { get; set;}
+        public decimal currentAmount { get; set; }
 
         public bool InvestAtStartOfMonth;
         public bool DisplayMonthly;
@@ -31,7 +32,7 @@
             }
             return listToReturn;
         }
-        public decimal CalculateCompoundInterest(decimal principal, decimal amountAddedEachYear, decimal interest, int time)
+        public void CalculateCompoundInterest(decimal principal, decimal amountAddedEachYear, decimal interest, int time)
         {
             decimal currentAmount = principal;
             decimal interestRate = interest / 100m;
@@ -40,8 +41,9 @@
                 currentAmount = currentAmount * (1.0m + interestRate);
                 currentAmount += amountAddedEachYear;
             }
+
             InterestGain = currentAmount;
-            return currentAmount;
+
         }
     }
 }
