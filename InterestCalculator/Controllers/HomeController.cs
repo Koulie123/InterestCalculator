@@ -28,6 +28,17 @@ namespace InterestCalculator.Controllers
             }
             return View(viewModel);
         }
+
+        public IActionResult CompoundInterest()
+        {
+            return View(new CompoundInterestViewModel());
+        }
+        [HttpPost]
+        public IActionResult CompoundInterest(CompoundInterestViewModel viewModel)
+        {
+            viewModel.InterestGain = viewModel.CalculateCompoundInterest(viewModel.Principal, viewModel.AmountAddedEachYear, viewModel.Interest, viewModel.NumberOfInvestmentYears);
+            return View(viewModel);
+        }
         public IActionResult Privacy()
         {
             return View();
