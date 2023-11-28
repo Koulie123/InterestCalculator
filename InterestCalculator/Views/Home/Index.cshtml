@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <form method="post">
+        <label for="principal">Principal Amount:</label>
+        <input type="number" id="principal" name="principal" required /><br />
+
+        <label for="Interest">Interest Rate (%):</label>
+        <input type="number" id="Interest" name="Interest" step="0.01" required /><br />
+
+        <label for="time">Time (Years):</label>
+        <input type="number" id="NumberOfInvestmentYears" name="NumberOfInvestmentYears" required /><br />
+
+        <button type="submit">Calculate</button>
+    </form>
+
+    @if (Model.Interest != 0)
+    {
+        <p>Calculated Interest: $@Model.InterestGain</p>
+    }
+
+</div>
