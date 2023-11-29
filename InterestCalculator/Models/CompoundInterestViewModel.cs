@@ -34,7 +34,7 @@
         }
         public void CalculateCompoundInterest(decimal principal, decimal amountAddedEachYear, decimal interest, int time)
         {
-            decimal currentAmount = principal;
+            currentAmount = principal;
             decimal interestRate = interest / 100m;
             for (int i = 0; i < time; i++)
             {
