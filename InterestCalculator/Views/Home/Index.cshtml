@@ -3,23 +3,8 @@
 }
 
 <div>
-    <h2 class="center display-4" class="display-4">Welcome to the simple Interst Calculator</h2>
-    <form method="post">
-        <label for="principal" class="inputField">Principal Amount:</label>
-        <input type="number" id="principal" name="principal" required /><br />
+    <h2 class="center display-4">Welcome to my Calculator website!</h2>
+    <h3 class="center display-4">Please Select the calculator you would like to use from the Navigation Bar.</h3>
 
-        <label for="Interest" class="inputField">Interest Rate (%):</label>
-        <input type="number" id="Interest" name="Interest" step="0.01" required /><br />
-
-        <label for="time" class="inputField">Time (Years):</label>
-        <input type="number" id="NumberOfInvestmentYears" name="NumberOfInvestmentYears" required /><br />
-
-        <button type="submit">Calculate</button>
-    </form>
-
-    @if (Model.Interest != 0)
-    {
-        <p>Calculated Interest: $@Model.InterestGain</p>
-    }
 
 </div>
