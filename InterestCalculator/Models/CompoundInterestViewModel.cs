@@ -3,11 +3,19 @@
     public class CompoundInterestViewModel
     {
         public decimal Principal { get; set; }
-        public int NumberOfInvestmentYears { get; set; }
-        public decimal AmountAddedEachYear { get; set; }
-        public decimal Interest { get; set; }
+        public int NumberOfInvestments { get; set; }
+        public decimal AmountAddedEachPerContribution { get; set; }
 
-        public decimal InterestGain { get; set;}
+        public int ContributionsPerYear { get; set; }
+        public int NumberOfYears { get; set; }
+        public int NumberOfContributions { get; set; }
+        public decimal Interest { get; set; }
+        
+        public List<decimal> TotalValuesList { get; set; }
+        public List<decimal> TotalInterestGainList { get; set; }
+        public List<decimal> CurrentInterestGainList { get; set; }
+
+        public decimal InterestGain { get; set; }
         public decimal currentAmount { get; set; }
 
         public bool InvestAtStartOfMonth;
@@ -32,16 +40,25 @@
             }
             return listToReturn;
         }
-        public void CalculateCompoundInterest(decimal principal, decimal amountAddedEachYear, decimal interest, int time)
+        public void CalculateCompoundInterest()
         {
-            currentAmount = principal;
-            decimal interestRate = interest / 100m;
-            for (int i = 0; i < time; i++)
+            TotalInterestGainList = new List<decimal>();
+            TotalValuesList = new List<decimal>();
+            CurrentInterestGainList = new List<decimal>();
+            TotalInterestGainList.Add(0.00m);
+            TotalValuesList.Add(Principal);
+            currentAmount = Principal;
+            decimal interestRate = Interest / 100m / NumberOfContributions;
+            NumberOfContributions = (int)NumberOfYears * ContributionsPerYear;
+            for (int i = 0; i < NumberOfContributions; i++)
             {
-                currentAmount = currentAmount * (1.0m + interestRate);
-                currentAmount += amountAddedEachYear;
+                currentAmount = currentAmount * interestRate;
+                InterestGain = currentAmount - TotalValuesList[i];
+                CurrentInterestGainList.Add(InterestGain);
+                TotalInterestGainList.Add(CurrentInterestGainList[i + 1] + TotalInterestGainList[i]);
+                currentAmount += AmountAddedEachPerContribution;
             }
-            InterestGain = Math.Round(currentAmount- Principal, 2);
+            InterestGain = Math.Round(currentAmount - Principal, 2);
             currentAmount = Math.Round(currentAmount, 2);
 
 

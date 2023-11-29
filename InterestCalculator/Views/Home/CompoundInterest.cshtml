@@ -12,12 +12,16 @@
         <input asp-for="Interest" type="number" step="0.01" />
     </div>
     <div>
-        <label asp-for="NumberOfInvestmentYears" class="inputField">Time (Years):</label>
-        <input asp-for="NumberOfInvestmentYears" type="number" />
+        <label asp-for="NumberOfYears" class="inputField">Time (Years):</label>
+        <input asp-for="NumberOfYears" type="number" />
     </div>
     <div>
-        <label asp-for="AmountAddedEachYear" class="inputField">AmountAddedEachYear</label>
-        <input asp-for="AmountAddedEachYear" type="number" />
+        <label asp-for="ContributionsPerYear" class="inputField"> Contributions Per Year</label>
+        <input asp-for="ContributionsPerYear" type="number" />
+    </div>
+    <div>
+        <label asp-for="AmountAddedEachPerContribution" class="inputField">Contribution Amount</label>
+        <input asp-for="AmountAddedEachPerContribution" type="number" />
     </div>
     <button type="submit">Calculate</button>
 </form>

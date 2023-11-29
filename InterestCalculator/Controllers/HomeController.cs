@@ -38,7 +38,7 @@ namespace InterestCalculator.Controllers
         [HttpPost]
         public IActionResult CompoundInterest(CompoundInterestViewModel viewModel)
         {
-            viewModel.CalculateCompoundInterest(viewModel.Principal, viewModel.AmountAddedEachYear, viewModel.Interest, viewModel.NumberOfInvestmentYears);
+            viewModel.CalculateCompoundInterest();
             return View(viewModel);
         }
 
