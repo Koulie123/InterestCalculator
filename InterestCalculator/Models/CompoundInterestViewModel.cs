@@ -48,8 +48,8 @@
             TotalInterestGainList.Add(0.00m);
             TotalValuesList.Add(Principal);
             currentAmount = Principal;
-            decimal interestRate = Interest / 100m / NumberOfContributions;
             NumberOfContributions = (int)NumberOfYears * ContributionsPerYear;
+            decimal interestRate = Interest / 100m / NumberOfContributions;
             for (int i = 0; i < NumberOfContributions; i++)
             {
                 currentAmount = currentAmount * interestRate;
