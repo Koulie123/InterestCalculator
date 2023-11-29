@@ -45,6 +45,7 @@
             TotalInterestGainList = new List<decimal>();
             TotalValuesList = new List<decimal>();
             CurrentInterestGainList = new List<decimal>();
+            CurrentInterestGainList.Add(0.00m);
             TotalInterestGainList.Add(0.00m);
             TotalValuesList.Add(Principal);
             currentAmount = Principal;
