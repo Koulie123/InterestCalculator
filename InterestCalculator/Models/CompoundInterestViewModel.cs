@@ -41,8 +41,9 @@
                 currentAmount = currentAmount * (1.0m + interestRate);
                 currentAmount += amountAddedEachYear;
             }
+            InterestGain = Math.Round(currentAmount- Principal, 2);
             currentAmount = Math.Round(currentAmount, 2);
-            InterestGain = Math.Round(currentAmount, 2);
+
 
         }
     }
