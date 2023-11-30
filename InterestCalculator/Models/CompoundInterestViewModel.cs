@@ -44,8 +44,7 @@
         {
             TotalInterestGainList = new List<decimal>();
             TotalValuesList = new List<decimal>();
-            CurrentInterestGainList = new List<decimal>();
-            CurrentInterestGainList.Add(0.00m);
+            CurrentInterestGainList = [0.00m];
             TotalInterestGainList.Add(0.00m);
             TotalValuesList.Add(Principal);
             currentAmount = Principal;
@@ -58,9 +57,10 @@
                 CurrentInterestGainList.Add(InterestGain);
                 TotalInterestGainList.Add(CurrentInterestGainList[i + 1] + TotalInterestGainList[i]);
                 currentAmount += AmountAddedEachPerContribution;
+                TotalValuesList.Add(currentAmount);
             }
-            InterestGain = Math.Round(currentAmount - Principal, 2);
-            currentAmount = Math.Round(currentAmount, 2);
+            InterestGain = Math.Round(TotalInterestGainList[TotalInterestGainList.Count - 1] - Principal, 2);
+            currentAmount = Math.Round(TotalValuesList[TotalValuesList.Count - 1], 2);
 
 
         }
