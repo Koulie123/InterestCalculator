@@ -48,19 +48,25 @@
             TotalInterestGainList.Add(0.00m);
             TotalValuesList.Add(Principal);
             currentAmount = Principal;
+            if (ContributionsPerYear == 0) ContributionsPerYear = 1;
             NumberOfContributions = (int)NumberOfYears * ContributionsPerYear;
-            decimal interestRate = Interest / 100m / NumberOfContributions;
+            decimal interestRate = 0m;
+            if (Interest != 0) {interestRate = Interest / 100m / ContributionsPerYear; }
             for (int i = 0; i < NumberOfContributions; i++)
             {
-                currentAmount = currentAmount * interestRate;
-                InterestGain = currentAmount - TotalValuesList[i];
-                CurrentInterestGainList.Add(InterestGain);
+                CurrentInterestGainList.Add(currentAmount * interestRate);
+                currentAmount = currentAmount * (1 + interestRate);
                 TotalInterestGainList.Add(CurrentInterestGainList[i + 1] + TotalInterestGainList[i]);
                 currentAmount += AmountAddedEachPerContribution;
                 TotalValuesList.Add(currentAmount);
             }
-            InterestGain = Math.Round(TotalInterestGainList[TotalInterestGainList.Count - 1] - Principal, 2);
             currentAmount = Math.Round(TotalValuesList[TotalValuesList.Count - 1], 2);
+            InterestGain = Math.Round(currentAmount - Principal, 2);
+            if (NumberOfYears == 0)
+            {
+                currentAmount = Principal;
+                InterestGain = 0m;
+            }
 
 
         }

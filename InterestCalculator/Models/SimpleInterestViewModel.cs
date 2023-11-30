@@ -18,10 +18,12 @@
         }
         public decimal SimpleInterestCalculation()
         {
+            decimal interestGenerated = Principal * NumberOfInvestmentYears * (InterestRate / 100m);
+
             decimal valueToReturn = Principal * NumberOfInvestmentYears * (1.0m + (InterestRate / 100m));
-            InterestGain = Math.Round(valueToReturn - Principal, 2);
-            FinalValue = Math.Round(valueToReturn, 2);
-            return valueToReturn;
+            InterestGain = Math.Round(interestGenerated, 2);
+            FinalValue = Math.Round(Principal + interestGenerated, 2);
+            return valueToReturn; 
 
         }
 

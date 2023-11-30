@@ -19,10 +19,10 @@
     <button type="submit">Calculate</button>
 </form>
 
-@if (Model.InterestGain != 0)
+@if (Model.FinalValue != 0)
 {
     <p class="inputField">
-        Simple Interest: $@Model.InterestGain
+        Interest Gained: $@Model.InterestGain
         Total Value at Maturity: $@Model.FinalValue
     </p>
 }

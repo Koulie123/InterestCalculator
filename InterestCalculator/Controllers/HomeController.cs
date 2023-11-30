@@ -51,7 +51,7 @@ namespace InterestCalculator.Controllers
         [HttpPost]
         public IActionResult SimpleInterest(SimpleInterestViewModel viewModel)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 viewModel.SimpleInterestCalculation();
             }
