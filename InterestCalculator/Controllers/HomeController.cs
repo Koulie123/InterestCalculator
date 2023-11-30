@@ -1,6 +1,8 @@
 using InterestCalculator.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace InterestCalculator.Controllers
 {

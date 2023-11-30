@@ -28,8 +28,78 @@
 
 @if (Model.InterestGain != 0)
 {
-    <p class="inputField">
-        Interest Gained: $@Model.InterestGain
+    <p class="inputField" id="CalculatorOutput">
+        Interest Gained: $@Model.InterestGain <br />
         Total Value at Maturity: $@Model.currentAmount
     </p>
+}
+@if (Model.Principal != 0 && Model.InterestGain == 0)
+{
+    <p class="inputField" id="CalculatorOutput">
+        These values will not generate any interest.
+    </p>
+}
+<canvas id="interestChart" width="400" height="400"></canvas>
+
+@{
+    var jsonTotalValues = Newtonsoft.Json.JsonConvert.SerializeObject(Model.TotalValuesList);
+    var jsonInvestments = Newtonsoft.Json.JsonConvert.SerializeObject(Enumerable.Range(1, Model.NumberOfContributions));
+    var jsonTotalInterest = Newtonsoft.Json.JsonConvert.SerializeObject(Model.TotalInterestGainList);
+}
+
+@if (Model.NumberOfContributions != 0)
+{
+    <!-- JavaScript to render the chart -->
+    <script>
+        var ctx = document.getElementById('interestChart').getContext('2d');
+        var totalValues = @Html.Raw(jsonTotalValues);
+        var totalInterest = @Html.Raw(jsonTotalInterest);
+        var Investments = @Html.Raw(jsonInvestments);
+
+        var maxValue = Math.max.apply(null, totalValues);
+
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Investments,
+                datasets: [{
+                    label: 'Total Value Over Time',
+                    data: totalValues,
+                    backgroundColor: 'rgba(0, 123, 255, 0.5)',
+                    borderColor: 'rgba(0, 123, 255, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'TotalInterestGained',
+                    data: totalInterest,
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Total Value'
+                        },
+                        max: maxValue
+                    },
+                    x: {
+                        title: {
+                            display:true,
+                            text: 'Investment Period'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true
+                    }
+                }
+            }
+        });
+    </script>
 }

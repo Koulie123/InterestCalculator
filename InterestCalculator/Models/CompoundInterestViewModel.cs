@@ -3,7 +3,6 @@
     public class CompoundInterestViewModel
     {
         public decimal Principal { get; set; }
-        public int NumberOfInvestments { get; set; }
         public decimal AmountAddedEachPerContribution { get; set; }
 
         public int ContributionsPerYear { get; set; }
@@ -15,6 +14,8 @@
         public List<decimal> TotalInterestGainList { get; set; }
         public List<decimal> CurrentInterestGainList { get; set; }
 
+        
+
         public decimal InterestGain { get; set; }
         public decimal currentAmount { get; set; }
 
@@ -23,23 +24,7 @@
         public CompoundInterestViewModel()
         {
         }
-        public List<decimal> CompoundInterestCalculationYear(decimal principal, int numberOfInvestmentYears, decimal amountAddedEachMonth, decimal interest)
-        {
-            decimal Principal = principal;
-            decimal AmountAddedEachMonth = amountAddedEachMonth;
-            decimal Interest = interest;
-            decimal InterestDecimal = 1m + (Interest / 100m);
-            int NumberOfInvestmentYears = numberOfInvestmentYears;
-            decimal CurrentValue = Principal;
-            List<decimal> listToReturn = new List<decimal>();
-            listToReturn.Add(principal);
-            for (int i = 0; i < numberOfInvestmentYears; i++)
-            {
-                CurrentValue = CurrentValue * InterestDecimal;
-                listToReturn.Add(CurrentValue);
-            }
-            return listToReturn;
-        }
+
         public void CalculateCompoundInterest()
         {
             TotalInterestGainList = new List<decimal>();

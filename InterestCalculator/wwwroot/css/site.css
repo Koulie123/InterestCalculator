@@ -32,3 +32,6 @@ body {
 }
 
 
+#CalculatorOutput {
+    width: max-content
+}

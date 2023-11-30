@@ -21,8 +21,8 @@
 
 @if (Model.FinalValue != 0)
 {
-    <p class="inputField">
-        Interest Gained: $@Model.InterestGain
+    <p class="inputField" id="CalculatorOutput">
+        Interest Gained: $@Model.InterestGain <br />
         Total Value at Maturity: $@Model.FinalValue
     </p>
-}
+}   
