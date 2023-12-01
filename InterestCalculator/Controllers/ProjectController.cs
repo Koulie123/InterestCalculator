@@ -12,5 +12,9 @@ namespace InterestCalculator.Controllers
         {
             return View();
         }
+        public IActionResult Project2()
+        {
+            return View();
+        }
     }
 }
