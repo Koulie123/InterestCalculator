@@ -61,7 +61,7 @@ namespace InterestCalculator.Controllers
         }
 
 
-        public IActionResult Privacy()
+        public IActionResult About()
         {
             return View();
         }
