@@ -3,17 +3,19 @@
 <h2>Simple Interest Calculator</h2>
 
 <form asp-action="SimpleInterest" method="post">
-    <div>
+    <div class="form-group">
         <label asp-for="Principal" class="inputField">Principal:</label>
-        <input asp-for="Principal" type="number" />
+        <input asp-for="Principal" type="number" class="form-control" />
     </div>
-    <div>
-        <label asp-for="InterestRate" class="inputField">Annual Interest Rate (%):</label>
-        <input asp-for="InterestRate" type="number" step="0.01" />
+    <div class="form-group">
+        
+        <label asp-for="InterestRate" class="inputField " >Annual Interest Rate (%):</label>
+        <input asp-for="InterestRate" type="number" step="0.01" class="form-control" />
     </div>
-    <div>
+    <div class="form-group">
+        
         <label asp-for="NumberOfInvestmentYears" class="inputField">Time (Years):</label>
-        <input asp-for="NumberOfInvestmentYears" type="number" />
+        <input asp-for="NumberOfInvestmentYears" type="number" class="form-control" />
     </div>
 
     <button type="submit">Calculate</button>
