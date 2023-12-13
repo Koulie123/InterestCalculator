@@ -1,4 +1,6 @@
-﻿namespace InterestCalculator.Models
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace InterestCalculator.Models
 {
     public class CompoundInterestViewModel
     {
@@ -14,8 +16,15 @@
         public List<decimal> TotalInterestGainList { get; set; }
         public List<decimal> CurrentInterestGainList { get; set; }
 
-        
-
+        public enum ContributionFrequency
+        {
+            Yearly = 1,
+            Monthly = 12,
+            Weekly = 52,
+            Daily = 365
+        }
+        public ContributionFrequency Frequency { get; set; }
+        public SelectList FrequencyOptions { get; set; }
         public decimal InterestGain { get; set; }
         public decimal currentAmount { get; set; }
 
@@ -23,6 +32,9 @@
         public bool DisplayMonthly;
         public CompoundInterestViewModel()
         {
+            FrequencyOptions = new SelectList(Enum.GetValues(typeof(ContributionFrequency)));
+
+
         }
 
         public void CalculateCompoundInterest()
@@ -33,7 +45,13 @@
             TotalInterestGainList.Add(0.00m);
             TotalValuesList.Add(Principal);
             currentAmount = Principal;
-            if (ContributionsPerYear == 0) ContributionsPerYear = 1;
+            switch (Frequency)
+            {
+            case ContributionFrequency.Yearly: ContributionsPerYear = 1; break;
+            case ContributionFrequency.Monthly: ContributionsPerYear = 12; break;
+            case ContributionFrequency.Weekly: ContributionsPerYear = 52; break;
+            case ContributionFrequency.Daily: ContributionsPerYear = 365; break;
+            }
             NumberOfContributions = (int)NumberOfYears * ContributionsPerYear;
             decimal interestRate = 0m;
             if (Interest != 0) {interestRate = Interest / 100m / ContributionsPerYear; }

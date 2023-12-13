@@ -3,25 +3,25 @@
 <h2>Compound Interest Calculator</h2>
 
 <form asp-action="CompoundInterest" method="post">
-    <div>
+    <div class="form-group">
         <label asp-for="Principal" class="inputField">Principal:</label>
-        <input asp-for="Principal" type="number" />
+        <input asp-for="Principal" type="number" class="form-control" />
     </div>
-    <div>
+    <div class="form-group">
         <label asp-for="Interest" class="inputField">Annual Interest Rate (%):</label>
-        <input asp-for="Interest" type="number" step="0.01" />
+        <input asp-for="Interest" type="number" step="0.01" class="form-control"/>
     </div>
-    <div>
+    <div class="form-group">
         <label asp-for="NumberOfYears" class="inputField">Time (Years):</label>
-        <input asp-for="NumberOfYears" type="number" />
+        <input asp-for="NumberOfYears" type="number" class="form-control"/>
     </div>
-    <div>
-        <label asp-for="ContributionsPerYear" class="inputField"> Contributions Per Year</label>
-        <input asp-for="ContributionsPerYear" type="number" />
+    <div class="form-group">
+        <label asp-for="Frequency" class="inputField" >Contribution Frequency</label>
+        <select asp-for="Frequency" asp-items="Model.FrequencyOptions" class="form-control"><</select>
     </div>
-    <div>
+    <div class="form-group">
         <label asp-for="AmountAddedEachPerContribution" class="inputField">Contribution Amount</label>
-        <input asp-for="AmountAddedEachPerContribution" type="number" />
+        <input asp-for="AmountAddedEachPerContribution" type="number" class="form-control" />
     </div>
     <button type="submit">Calculate</button>
 </form>
@@ -70,7 +70,7 @@
                     borderWidth: 1
                 },
                 {
-                    label: 'TotalInterestGained',
+                    label: 'Total Interest Gained',
                     data: totalInterest,
                     backgroundColor: 'rgba(255, 99, 132, 0.5)',
                     borderColor: 'rgba(255, 99, 132, 1)',

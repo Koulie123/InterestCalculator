@@ -35,3 +35,21 @@ body {
 #CalculatorOutput {
     width: max-content
 }
+
+#dropDownFrequency {
+    width: 250px;
+    height: 60px;
+}
+
+
+
+.form-group {
+    margin-bottom: 1rem;
+}
+.form-control {
+    width: 20%;
+    padding: .375rem .75rem;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    font-size: 1rem;
+}

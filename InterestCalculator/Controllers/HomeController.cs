@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using static InterestCalculator.Models.CompoundInterestViewModel;
 
 namespace InterestCalculator.Controllers
 {
@@ -19,25 +21,42 @@ namespace InterestCalculator.Controllers
 
         public IActionResult Index()
         {
-            var viewModel = new CompoundInterestModelYear();
+            var viewModel = new CompoundInterestViewModel();
             return View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult Index(CompoundInterestModelYear viewModel)
+        public IActionResult Index(CompoundInterestViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                viewModel.SimplenterestCalculationTotal();
+                viewModel.CalculateCompoundInterest();
             }
             return View(viewModel);
         }
 
         public IActionResult CompoundInterest()
         {
-            return View(new CompoundInterestViewModel());
+            var frequencyOptions = Enum.GetValues(typeof(ContributionFrequency))
+                                       .Cast<ContributionFrequency>()
+                                       .Select(f => new SelectListItem
+                                       {
+                                           Text = f.ToString(),
+                                           Value = ((int)f).ToString()
+                                       })
+                                       .ToList();
+
+            var viewModel = new CompoundInterestViewModel
+            {
+                FrequencyOptions = new SelectList(frequencyOptions, "Value", "Text")
+            };
+
+            return View(viewModel);
         }
-        [HttpPost]
+
+    
+
+    [HttpPost]
         public IActionResult CompoundInterest(CompoundInterestViewModel viewModel)
         {
             viewModel.CalculateCompoundInterest();
