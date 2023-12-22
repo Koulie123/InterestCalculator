@@ -12,7 +12,7 @@ namespace InterestCalculator.Models
         public int NumberOfContributions { get; set; }
         public decimal Interest { get; set; }
         
-        public List<decimal> TotalValuesList { get; set; }
+        public List<decimal>? TotalValuesList { get; set; }
         public List<decimal> TotalInterestGainList { get; set; }
         public List<decimal> CurrentInterestGainList { get; set; }
 
