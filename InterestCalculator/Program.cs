@@ -46,7 +46,7 @@ namespace InterestCalculator
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             app.MapRazorPages();
             //app.Urls.Add("http://localhost:5000");
-            app.Urls.Add("http://0.0.0.0:5000");
+            //app.Urls.Add("http://0.0.0.0:5000");
             app.Run();
         }
     }
