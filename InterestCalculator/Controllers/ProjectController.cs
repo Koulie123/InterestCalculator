@@ -8,7 +8,7 @@ namespace InterestCalculator.Controllers
         {
             return View();
         }
-        public IActionResult Project1()
+        public IActionResult BikepackingSite()
         {
             return View();
         }
