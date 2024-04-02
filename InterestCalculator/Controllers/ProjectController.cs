@@ -12,7 +12,7 @@ namespace InterestCalculator.Controllers
         {
             return View();
         }
-        public IActionResult Project2()
+        public IActionResult ConsoleRogueLite()
         {
             return View();
         }
